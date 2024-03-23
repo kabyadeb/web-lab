@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<br />
+{% if request.user.is_authenticated %}
+<a href="{% url 'create' %}" class="btn btn-success my-1 mx-5">Create blog </a>
+{% endif %}
+
+<div class="row row-cols-xl-5 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mx-5">
+  {% for place in places %}
+  <div class="col-lg-6">
+    <div class="card m-2">
+      <div>
+        <img
+          src="{{place.image.url}}"
+          alt=""
+          class="card-img-top"
+          height="300px"
+        />
+      </div>
+      <div class="text-center my-2">
+        <a href="{% url 'place_detail' place.id %}" class="h3 my-2"
+          >{{place.title}}</a
+        >
+      </div>
+      <div class="my-3 d-flex justify-content-around">
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'update' place.id %}" class="btn btn-info mt-2"
+          >Update</a
+        >
+        <a href="{% url 'delete' place.id %}" class="btn btn-danger mt-2"
+          >Delete</a
+        >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

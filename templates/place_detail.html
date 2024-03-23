@@ -1,0 +1,19 @@
+<!-- place_detail.html -->
+
+{% extends 'base.html' %} {% block content %}
+<div class="container my-3">
+  <div class="card p-2">
+    <h2 class="text-center">{{ place.title }}</h2>
+    <p><strong>Description:</strong></p>
+    <p>{{ place.description }}</p>
+    <p>
+      <strong>Location:</strong>
+      <a href="">{{ place.location }}</a>
+    </p>
+    <p><strong>Created at:</strong> {{ place.created_at }}</p>
+    <div>
+      <img src="{{place.image.url}}" alt="" class="card-img-top" />
+    </div>
+  </div>
+</div>
+{% endblock %}
